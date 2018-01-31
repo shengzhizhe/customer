@@ -37,7 +37,7 @@ public interface PersonalService {
      *
      * @return ResponseResult<Page<PersonalModel>>
      */
-    ResponseResult<Page<PersonalModel>> findAll();
+    ResponseResult<Page<PersonalModel>> findAll(int now,int size);
 
     /**
      * 根据id查询个人资料实体

@@ -83,4 +83,15 @@ public interface PersonalMapper {
             "select * from " + tableName + " where account = #{account}"
     })
     PersonalModel getByAccount(@Param("account") String account);
+
+    /**
+     * 根据昵称查询个人资料实体
+     *
+     * @param nickname String 昵称
+     * @return PersonalModel 个人资料实体
+     */
+    @Select({
+            "select * from " + tableName + " where nickname = #{nickname}"
+    })
+    PersonalModel getByNickname(@Param("nickname") String nickname);
 }

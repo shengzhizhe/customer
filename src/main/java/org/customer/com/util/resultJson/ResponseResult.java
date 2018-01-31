@@ -7,7 +7,7 @@ public class ResponseResult<T> {
     private boolean success;
     private String message;
     private T data;
-    private int code;
+    private int code = 200;
 
     public boolean isSuccess() {
         return success;
