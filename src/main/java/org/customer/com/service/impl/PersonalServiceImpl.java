@@ -39,7 +39,7 @@ public class PersonalServiceImpl implements PersonalService {
     private ResponseResult<PersonalModel> result;
 
     @Override
-    public ResponseResult<PersonalModel> saven(PersonalModel model) {
+    public ResponseResult<PersonalModel> save(PersonalModel model) {
         logger.info(Sl4jToString.info(1,
                 serviceName,
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -61,7 +61,7 @@ public class PersonalServiceImpl implements PersonalService {
             }
         }
         model.setUuid(GetUuid.getUUID());
-        int i = mapper.saven(model);
+        int i = mapper.save(model);
         switch (i) {
             case 0:
                 result.setSuccess(true);

@@ -84,7 +84,7 @@ public class PersonalController {
             return result;
         }
         if (model.getUuid() == null || model.getUuid().isEmpty())
-            return service.saven(model);
+            return service.save(model);
         else
             return service.update(model);
     }

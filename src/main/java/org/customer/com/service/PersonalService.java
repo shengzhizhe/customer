@@ -14,7 +14,7 @@ public interface PersonalService {
      * @param model PersonalModel 个人资料实体
      * @return ResponseResult<PersonalModel>
      */
-    ResponseResult<PersonalModel> saven(PersonalModel model);
+    ResponseResult<PersonalModel> save(PersonalModel model);
 
     /**
      * 根据id删除个人资料

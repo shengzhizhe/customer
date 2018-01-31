@@ -24,7 +24,7 @@ public interface PersonalMapper {
                     "#{model.name},#{model.phone},#{model.idno},#{model.sex},#{model.address},#{model.qq}," +
                     "#{model.wechat},#{model.microblog})"
     })
-    int saven(@Param("model") PersonalModel model);
+    int save(@Param("model") PersonalModel model);
 
     /**
      * 根据id删除个人资料
