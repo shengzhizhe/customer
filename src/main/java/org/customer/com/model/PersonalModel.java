@@ -17,7 +17,7 @@ public class PersonalModel implements Serializable {
     @Length(max = 100, message = "账户最大长度为100位")
     private String account;
     //    头像
-    private byte[] portrait;
+    private String portrait;
     //    昵称
     @NotBlank(message = "昵称不能为空")
     @Pattern(regexp = "^[\\u4e00-\\u9fa5\\w\\d]{1,8}$", message = "昵称可以使用字母数字或汉字,最大长度为8位")
@@ -69,11 +69,11 @@ public class PersonalModel implements Serializable {
         this.account = account;
     }
 
-    public byte[] getPortrait() {
+    public String getPortrait() {
         return portrait;
     }
 
-    public void setPortrait(byte[] portrait) {
+    public void setPortrait(String portrait) {
         this.portrait = portrait;
     }
 
@@ -163,7 +163,7 @@ public class PersonalModel implements Serializable {
 
     public PersonalModel(String uuid,
                          String account,
-                         byte[] portrait,
+                         String portrait,
                          String nickname,
                          String surname,
                          String name,
