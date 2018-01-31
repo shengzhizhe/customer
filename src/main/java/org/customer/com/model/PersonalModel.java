@@ -17,7 +17,6 @@ public class PersonalModel implements Serializable {
     @Length(max = 100, message = "账户最大长度为100位")
     private String account;
     //    头像
-    @Length(max = 1048576, message = "头像图片过大,限制低于1M")
     private byte[] portrait;
     //    昵称
     @NotBlank(message = "昵称不能为空")

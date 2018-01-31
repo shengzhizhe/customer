@@ -44,11 +44,18 @@ public interface PersonalMapper {
      * @return int >= 0 操作成功
      */
     @Update({
-            "update " + tableName + " set (portrait,nickname,surname,name,phone,idno,sex,address,qq," +
-                    "wechat,microblog) " +
-                    "values (#{model.portrait},#{model.nickname},#{model.surname}," +
-                    "#{model.name},#{model.phone},#{model.idno},#{model.sex},#{model.address},#{model.qq}," +
-                    "#{model.wechat},#{model.microblog}) where account = #{model.account}"
+            "update " + tableName + " set portrait=#{model.portrait}," +
+                    "nickname=#{model.nickname}," +
+                    "surname=#{model.surname}," +
+                    "name=#{model.name}," +
+                    "phone=#{model.phone}," +
+                    "idno=#{model.idno}," +
+                    "sex=#{model.sex}," +
+                    "address=#{model.address}," +
+                    "qq=#{model.qq}," +
+                    "wechat=#{model.wechat}," +
+                    "microblog=#{model.microblog} " +
+                    " where account = #{model.account}"
     })
     int update(@Param("model") PersonalModel model);
 
