@@ -3,6 +3,7 @@ package org.customer.com.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.customer.com.model.AccountModel;
+import org.customer.com.model.PersonalModel;
 import org.customer.com.service.AccountService;
 import org.customer.com.util.resultJson.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "account", description = "账户")
 @RestController
 @RequestMapping("/account")
-public class AccountController {
+public class PersonalController {
 
     @Autowired
     private AccountService accountService;
@@ -89,7 +90,7 @@ public class AccountController {
     @RequestMapping(value = "/account",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseResult add(@RequestBody AccountModel model) {
+    public ResponseResult add(@RequestBody PersonalModel model) {
 //新增账户
         return accountService.add(model);
     }
