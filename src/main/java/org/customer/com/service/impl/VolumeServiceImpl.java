@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
@@ -40,11 +41,18 @@ public class VolumeServiceImpl implements VolumeService {
                 model.toString(),
                 result.getCode(),
                 null));
-
-        
+//          判断活动是否到期(放入client做判断)
+//          判断是否有未使用的
+        List<VolumeModel> list = mapper.findByActivity(model.getActivity(), model.getAccountId(), "N");
+        if (list != null && list.size() > 0) {
+            result.setSuccess(false);
+            result.setCode(501);
+            return result;
+        }
 
         model.setUuid(GetUuid.getUUID());
-        model.setTimes(new Timestamp(System.currentTimeMillis()));
+        model.setReceiveTimes(new Timestamp(System.currentTimeMillis()));
+        model.setUse("N");
         int i = mapper.save(model);
         switch (i) {
             case 0:

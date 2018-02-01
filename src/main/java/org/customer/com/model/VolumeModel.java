@@ -1,7 +1,5 @@
 package org.customer.com.model;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import java.sql.Timestamp;
 
 /**
@@ -12,13 +10,19 @@ public class VolumeModel {
     //    uuid
     private String uuid;
     //    accountId
-    @NotBlank(message = "领卷人不能为空")
     private String accountId;
-    //    卷id
-    @NotBlank(message = "卷不能为空")
-    private String volumeId;
-    //    领取时间
-    private Timestamp times;
+    //    活动
+    private String activity;
+    //    卷类型
+    private String typeId;
+    //    卷编号
+    private String number;
+    //    卷领取时间
+    private Timestamp receiveTimes;
+    //    卷是否使用
+    private String use;
+    //    卷使用时间
+    private Timestamp useTimes;
 
     public String getUuid() {
         return uuid;
@@ -36,31 +40,74 @@ public class VolumeModel {
         this.accountId = accountId;
     }
 
-    public String getVolumeId() {
-        return volumeId;
+    public String getActivity() {
+        return activity;
     }
 
-    public void setVolumeId(String volumeId) {
-        this.volumeId = volumeId;
+    public void setActivity(String activity) {
+        this.activity = activity;
     }
 
-    public Timestamp getTimes() {
-        return times;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setTimes(Timestamp times) {
-        this.times = times;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public Timestamp getReceiveTimes() {
+        return receiveTimes;
+    }
+
+    public void setReceiveTimes(Timestamp receiveTimes) {
+        this.receiveTimes = receiveTimes;
+    }
+
+    public String getUse() {
+        return use;
+    }
+
+    public void setUse(String use) {
+        this.use = use;
+    }
+
+    public Timestamp getUseTimes() {
+        return useTimes;
+    }
+
+    public void setUseTimes(Timestamp useTimes) {
+        this.useTimes = useTimes;
     }
 
     public VolumeModel() {
         super();
     }
 
-    public VolumeModel(String uuid, String accountId, String volumeId, Timestamp times) {
+    public VolumeModel(String uuid,
+                       String accountId,
+                       String activity,
+                       String typeId,
+                       String number,
+                       Timestamp receiveTimes,
+                       String use,
+                       Timestamp useTimes) {
         this.uuid = uuid;
         this.accountId = accountId;
-        this.volumeId = volumeId;
-        this.times = times;
+        this.activity = activity;
+        this.typeId = typeId;
+        this.number = number;
+        this.receiveTimes = receiveTimes;
+        this.use = use;
+        this.useTimes = useTimes;
     }
 
     @Override
@@ -68,8 +115,12 @@ public class VolumeModel {
         return "VolumeModel{" +
                 "uuid='" + uuid + '\'' +
                 ", accountId='" + accountId + '\'' +
-                ", volumeId='" + volumeId + '\'' +
-                ", times=" + times +
+                ", activity='" + activity + '\'' +
+                ", typeId='" + typeId + '\'' +
+                ", number='" + number + '\'' +
+                ", receiveTimes=" + receiveTimes +
+                ", use='" + use + '\'' +
+                ", useTimes=" + useTimes +
                 '}';
     }
 }
