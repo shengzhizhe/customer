@@ -19,5 +19,5 @@ public interface VolumeService {
      *
      * @return Page<VolumeModel> 领卷记录的分页实体，按照日期降序排序
      */
-    ResponseResult<Page<VolumeModel>> findAll(int now, int size);
+    ResponseResult<Page<VolumeModel>> findAll(int now, int size,String usb);
 }

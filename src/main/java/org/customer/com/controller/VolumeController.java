@@ -51,8 +51,9 @@ public class VolumeController {
     @RequestMapping(value = "/findAll",
             method = RequestMethod.GET)
     public ResponseResult findAll(@RequestParam(value = "pageNow") int pageNow,
-                                  @RequestParam(value = "pageSize") int pageSize) {
-        return service.findAll(pageNow, pageSize);
+                                  @RequestParam(value = "pageSize") int pageSize,
+                                  @RequestParam(value = "use") String use) {
+        return service.findAll(pageNow, pageSize,use);
     }
 
     @ApiOperation(value = "新增领卷记录",

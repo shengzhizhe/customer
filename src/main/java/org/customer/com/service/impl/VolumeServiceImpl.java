@@ -74,7 +74,7 @@ public class VolumeServiceImpl implements VolumeService {
     }
 
     @Override
-    public ResponseResult<Page<VolumeModel>> findAll(int now, int size) {
+    public ResponseResult<Page<VolumeModel>> findAll(int now, int size,String use) {
         logger.info(Sl4jToString.info(1,
                 serviceName,
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -83,7 +83,7 @@ public class VolumeServiceImpl implements VolumeService {
                 null));
         ResponseResult<Page<VolumeModel>> result = new ResponseResult<>();
         PageHelper.startPage(now, size);
-        Page<VolumeModel> page = mapper.findAll();
+        Page<VolumeModel> page = mapper.findAll(use);
         result.setSuccess(true);
         result.setCode(200);
         result.setData(page);

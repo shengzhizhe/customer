@@ -35,9 +35,9 @@ public interface VolumeMapper {
      */
     @Select({
             "select uuid,account_id accountId,activity,type_id typeId,number,receive_times receiveTimes,use,use_times useTimes " +
-                    " from " + tableName + " order by receiveTimes desc"
+                    " from " + tableName + " where use = #{use} order by receiveTimes desc"
     })
-    Page<VolumeModel> findAll();
+    Page<VolumeModel> findAll(@Param("use") String use);
 
     /**
      * 根据活动和账户查询是否有卷，并返回领卷记录实体
