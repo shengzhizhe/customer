@@ -31,7 +31,7 @@ public interface VolumeMapper {
      * @return Page<VolumeModel> 领卷记录的分页实体，按照日期降序排序
      */
     @Select({
-            "select * from " + tableName + " order by times desc"
+            "select uuid,account_id accountId,volume_id volumeId,times from " + tableName + " order by times desc"
     })
     Page<VolumeModel> findAll();
 
