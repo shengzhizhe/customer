@@ -1,5 +1,7 @@
 package org.customer.com.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.sql.Timestamp;
 
 /**
@@ -10,8 +12,10 @@ public class VolumeModel {
     //    uuid
     private String uuid;
     //    accountId
+    @NotBlank(message = "领卷人不能为空")
     private String accountId;
     //    卷id
+    @NotBlank(message = "卷不能为空")
     private String volumeId;
     //    领取时间
     private Timestamp times;
