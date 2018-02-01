@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class VolumeServiceImpl implements VolumeService {
@@ -39,6 +41,7 @@ public class VolumeServiceImpl implements VolumeService {
                 result.getCode(),
                 null));
         model.setUuid(GetUuid.getUUID());
+        model.setTimes(new Timestamp(System.currentTimeMillis()));
         int i = mapper.save(model);
         switch (i) {
             case 0:
