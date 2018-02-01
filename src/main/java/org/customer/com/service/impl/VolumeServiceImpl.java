@@ -40,6 +40,9 @@ public class VolumeServiceImpl implements VolumeService {
                 model.toString(),
                 result.getCode(),
                 null));
+
+        
+
         model.setUuid(GetUuid.getUUID());
         model.setTimes(new Timestamp(System.currentTimeMillis()));
         int i = mapper.save(model);
