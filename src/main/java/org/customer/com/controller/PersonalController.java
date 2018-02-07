@@ -76,7 +76,7 @@ public class PersonalController {
     public ResponseResult update(@Valid @RequestBody PersonalModel model, BindingResult bindingResult) {
         //数据验证
         if (bindingResult.hasErrors()) {
-            ResponseResult result = new ResponseResult();
+            ResponseResult<PersonalModel> result = new ResponseResult<>();
             result.setSuccess(false);
             result.setCode(400);
             result.setData(model);

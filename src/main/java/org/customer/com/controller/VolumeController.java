@@ -67,7 +67,7 @@ public class VolumeController {
     public ResponseResult save(@Valid @RequestBody VolumeModel model, BindingResult bindingResult) {
         //数据验证
         if (bindingResult.hasErrors()) {
-            ResponseResult result = new ResponseResult();
+            ResponseResult<VolumeModel> result = new ResponseResult<>();
             result.setSuccess(false);
             result.setCode(400);
             result.setData(model);
