@@ -71,6 +71,8 @@ public class PersonalServiceImpl implements PersonalService {
                 result.setSuccess(true);
                 result.setCode(200);
                 break;
+                default:result.setSuccess(false);
+                    result.setCode(500);
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -99,6 +101,8 @@ public class PersonalServiceImpl implements PersonalService {
                 result.setSuccess(true);
                 result.setCode(200);
                 break;
+            default:result.setSuccess(false);
+                result.setCode(500);
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -127,6 +131,8 @@ public class PersonalServiceImpl implements PersonalService {
                 result.setSuccess(true);
                 result.setCode(200);
                 break;
+            default:result.setSuccess(false);
+                result.setCode(500);
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,

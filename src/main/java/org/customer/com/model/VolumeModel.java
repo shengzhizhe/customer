@@ -65,11 +65,11 @@ public class VolumeModel {
     }
 
     public Timestamp getReceiveTimes() {
-        return receiveTimes;
+        return (Timestamp) receiveTimes.clone();
     }
 
     public void setReceiveTimes(Timestamp receiveTimes) {
-        this.receiveTimes = receiveTimes;
+        this.receiveTimes = receiveTimes == null ? new Timestamp(System.currentTimeMillis()) : receiveTimes;
     }
 
     public String getUse() {
@@ -81,11 +81,11 @@ public class VolumeModel {
     }
 
     public Timestamp getUseTimes() {
-        return useTimes;
+        return (Timestamp) useTimes.clone();
     }
 
     public void setUseTimes(Timestamp useTimes) {
-        this.useTimes = useTimes;
+        this.useTimes = useTimes == null ? new Timestamp(System.currentTimeMillis()) : useTimes;
     }
 
     public VolumeModel() {
@@ -105,9 +105,9 @@ public class VolumeModel {
         this.activity = activity;
         this.typeId = typeId;
         this.number = number;
-        this.receiveTimes = receiveTimes;
+        this.receiveTimes = receiveTimes == null ? new Timestamp(System.currentTimeMillis()) : receiveTimes;
         this.use = use;
-        this.useTimes = useTimes;
+        this.useTimes = useTimes == null ? new Timestamp(System.currentTimeMillis()) : useTimes;
     }
 
     @Override

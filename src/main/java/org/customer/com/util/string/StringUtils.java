@@ -1,9 +1,9 @@
 package org.customer.com.util.string;
 
 public class StringUtils {
-    public static String Str(String str) {
+    public static String str(String st) {
         try {
-            return new String(str.getBytes(), "utf8");
+            return new String(st.getBytes("UTF-8"), "UTF-8");
         } catch (Exception e) {
             return "";
         }

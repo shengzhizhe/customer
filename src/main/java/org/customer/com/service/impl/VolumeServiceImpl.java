@@ -63,6 +63,9 @@ public class VolumeServiceImpl implements VolumeService {
                 result.setSuccess(true);
                 result.setCode(200);
                 break;
+            default:
+                result.setSuccess(false);
+                result.setCode(500);
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -74,7 +77,7 @@ public class VolumeServiceImpl implements VolumeService {
     }
 
     @Override
-    public ResponseResult<Page<VolumeModel>> findAll(int now, int size,String use) {
+    public ResponseResult<Page<VolumeModel>> findAll(int now, int size, String use) {
         logger.info(Sl4jToString.info(1,
                 serviceName,
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
