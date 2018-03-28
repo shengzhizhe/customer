@@ -1,10 +1,10 @@
-package org.customer.com.mapper;
+package org.customer.com.volume.mapper;
 
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.customer.com.model.VolumeModel;
+import org.customer.com.volume.model.VolumeModel;
 
 import java.util.List;
 

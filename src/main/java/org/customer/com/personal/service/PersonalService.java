@@ -1,7 +1,7 @@
-package org.customer.com.service;
+package org.customer.com.personal.service;
 
 import com.github.pagehelper.Page;
-import org.customer.com.model.PersonalModel;
+import org.customer.com.personal.model.PersonalModel;
 import org.customer.com.util.resultJson.ResponseResult;
 
 /**

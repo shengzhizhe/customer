@@ -1,8 +1,8 @@
-package org.customer.com.service;
+package org.customer.com.volume.service;
 
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Param;
-import org.customer.com.model.VolumeModel;
+import org.customer.com.volume.model.VolumeModel;
 import org.customer.com.util.resultJson.ResponseResult;
 
 public interface VolumeService {

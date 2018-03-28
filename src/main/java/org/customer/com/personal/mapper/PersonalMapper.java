@@ -1,8 +1,8 @@
-package org.customer.com.mapper;
+package org.customer.com.personal.mapper;
 
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.*;
-import org.customer.com.model.PersonalModel;
+import org.customer.com.personal.model.PersonalModel;
 
 /**
  * @name 个人资料

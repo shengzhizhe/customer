@@ -1,10 +1,10 @@
-package org.customer.com.service.impl;
+package org.customer.com.personal.service.serviceImpl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.customer.com.mapper.PersonalMapper;
-import org.customer.com.model.PersonalModel;
-import org.customer.com.service.PersonalService;
+import org.customer.com.personal.mapper.PersonalMapper;
+import org.customer.com.personal.model.PersonalModel;
+import org.customer.com.personal.service.PersonalService;
 import org.customer.com.util.resultJson.ResponseResult;
 import org.customer.com.util.sl4j.Sl4jToString;
 import org.customer.com.util.uuidUtil.GetUuid;

@@ -1,4 +1,4 @@
-package org.customer.com.mapper.sql;
+package org.customer.com.volume.mapper.sql;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,10 +1,10 @@
-package org.customer.com.service.impl;
+package org.customer.com.volume.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.customer.com.mapper.VolumeMapper;
-import org.customer.com.model.VolumeModel;
-import org.customer.com.service.VolumeService;
+import org.customer.com.volume.mapper.VolumeMapper;
+import org.customer.com.volume.model.VolumeModel;
+import org.customer.com.volume.service.VolumeService;
 import org.customer.com.util.resultJson.ResponseResult;
 import org.customer.com.util.sl4j.Sl4jToString;
 import org.customer.com.util.uuidUtil.GetUuid;

@@ -3,11 +3,11 @@ package org.customer.com.util.resultJson;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class ResponseResult<T> {
+public class ResponseResult<Object> {
     private boolean success;
     private String message;
-    private T data;
-    private int code = 200;
+    private Object data;
+    private int code;
 
     public boolean isSuccess() {
         return success;
@@ -25,11 +25,11 @@ public class ResponseResult<T> {
         this.message = message;
     }
 
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
@@ -45,10 +45,25 @@ public class ResponseResult<T> {
         super();
     }
 
-    public ResponseResult(boolean success, String message, T data, int code) {
+    public ResponseResult(boolean success, String message, Object data, int code) {
         this.success = success;
         this.message = message;
         this.data = data;
         this.code = code;
+    }
+
+    public ResponseResult(boolean success, String message) {
+        this.success = success;
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseResult{" +
+                "success=" + success +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                ", code=" + code +
+                '}';
     }
 }

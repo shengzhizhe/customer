@@ -1,4 +1,4 @@
-package org.customer.com.model;
+package org.customer.com.volume.model;
 
 import java.sql.Timestamp;
 

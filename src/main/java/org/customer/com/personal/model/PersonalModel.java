@@ -1,9 +1,9 @@
-package org.customer.com.model;
+package org.customer.com.personal.model;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -14,7 +14,7 @@ public class PersonalModel implements Serializable {
     //    uuid
     private String uuid;
     //    账户
-    @Length(max = 100, message = "账户最大长度为100位")
+    @Size(max = 100, message = "账户最大长度为100位")
     private String account;
     //    头像
     private String portrait;
@@ -26,7 +26,7 @@ public class PersonalModel implements Serializable {
     @Pattern(regexp = "^[\\u4e00-\\u9fa5]{1,20}$", message = "姓 必须是汉字,最大长度为20位")
     private String surname;
     //    名
-    @Length(max = 20, message = "名 最大长度为20(考虑少数民族)")
+    @Size(max = 20, message = "名 最大长度为20(考虑少数民族)")
     @Pattern(regexp = "^[\\u4e00-\\u9fa5]{1,20}$", message = "名 必须是汉字,最大长度为20位")
     private String name;
     //    手机
@@ -41,16 +41,16 @@ public class PersonalModel implements Serializable {
     @Pattern(regexp = "^[Y,N]$", message = "不支持第三性别")
     private String sex;
     //    地址
-    @Length(max = 200, message = "地址最大长度为200位")
+    @Size(max = 200, message = "地址最大长度为200位")
     private String address;
     //    qq
     @Pattern(regexp = "^[\\d]{5,12}$", message = "请输入正确格式的qq")
     private String qq;
     //    微信
-    @Length(max = 200, message = "微信最大长度为200位")
+    @Size(max = 200, message = "微信最大长度为200位")
     private String wechat;
     //    微博
-    @Length(max = 200, message = "微博最大长度为200位")
+    @Size(max = 200, message = "微博最大长度为200位")
     private String microblog;
 
     public String getUuid() {

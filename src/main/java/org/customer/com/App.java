@@ -18,7 +18,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // Spring Boot 应用的标识
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("org.customer.com.mapper")
+@MapperScan("org.customer.com.*.mapper")
 //定时器
 @EnableScheduling
 public class App {//extends SpringBootServletInitializer {

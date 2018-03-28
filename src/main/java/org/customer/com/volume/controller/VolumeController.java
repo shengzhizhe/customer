@@ -1,9 +1,9 @@
-package org.customer.com.controller;
+package org.customer.com.volume.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.customer.com.model.PersonalModel;
-import org.customer.com.service.PersonalService;
+import org.customer.com.volume.model.VolumeModel;
+import org.customer.com.volume.service.VolumeService;
 import org.customer.com.util.resultJson.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,55 +37,43 @@ import javax.validation.Valid;
  * 请求参数无法使用@ApiImplicitParam注解进行描述的时候）
  * '@ApiModelProperty'：描述一个model的属性
  */
-@Api(value = "personal", description = "个人资料")
+@Api(value = "volume", description = "领卷记录")
 @RestController
-@RequestMapping("/personal")
-public class PersonalController {
+@RequestMapping("/volume")
+public class VolumeController {
 
     @Autowired
-    private PersonalService service;
+    private VolumeService service;
 
-    @ApiOperation(value = "个人资料分页",
+    @ApiOperation(value = "领卷记录分页",
             response = ResponseResult.class,
             httpMethod = "GET")
     @RequestMapping(value = "/findAll",
             method = RequestMethod.GET)
-    public ResponseResult init(@RequestParam(value = "pageNow") int pageNow,
-                               @RequestParam(value = "pageSize") int pageSize) {
-        return service.findAll(pageNow, pageSize);
+    public ResponseResult findAll(@RequestParam(value = "pageNow") int pageNow,
+                                  @RequestParam(value = "pageSize") int pageSize,
+                                  @RequestParam(value = "use") String use) {
+        return service.findAll(pageNow, pageSize,use);
     }
 
-    @ApiOperation(value = "根据账户查找",
-            notes = "根据账户获取个人资料",
-            response = ResponseResult.class,
-            httpMethod = "GET")
-    @RequestMapping(value = "/account",
-            method = RequestMethod.GET)
-    public ResponseResult get(@RequestParam("account") String account) {
-        return service.getByAccount(account);
-    }
-
-    @ApiOperation(value = "更新个人资料",
-            notes = "更新个人资料",
+    @ApiOperation(value = "新增领卷记录",
+            notes = "新增领卷记录",
             response = ResponseResult.class,
             httpMethod = "POST",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value = "/update",
+    @RequestMapping(value = "/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseResult update(@Valid @RequestBody PersonalModel model, BindingResult bindingResult) {
+    public ResponseResult save(@Valid @RequestBody VolumeModel model, BindingResult bindingResult) {
         //数据验证
         if (bindingResult.hasErrors()) {
-            ResponseResult<PersonalModel> result = new ResponseResult<>();
+            ResponseResult<VolumeModel> result = new ResponseResult<>();
             result.setSuccess(false);
             result.setCode(400);
             result.setData(model);
             result.setMessage(bindingResult.getFieldError().getDefaultMessage());
             return result;
         }
-        if (model.getUuid() == null || model.getUuid().isEmpty())
-            return service.save(model);
-        else
-            return service.update(model);
+        return service.save(model);
     }
 }
