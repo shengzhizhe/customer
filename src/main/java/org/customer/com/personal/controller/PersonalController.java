@@ -78,7 +78,6 @@ public class PersonalController {
         if (bindingResult.hasErrors()) {
             ResponseResult<PersonalModel> result = new ResponseResult<>();
             result.setSuccess(false);
-            result.setCode(400);
             result.setData(model);
             result.setMessage(bindingResult.getFieldError().getDefaultMessage());
             return result;

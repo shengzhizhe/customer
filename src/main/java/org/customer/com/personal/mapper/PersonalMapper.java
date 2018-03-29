@@ -9,7 +9,7 @@ import org.customer.com.personal.model.PersonalModel;
  */
 public interface PersonalMapper {
 
-    String tableName = " personal_table ";
+    String tableName = " customer_personal_table ";
 
     /**
      * 新增个人资料

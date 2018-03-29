@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * @name 个人资料
- * @table personal_table
+ * @table customer_personal_table
  */
 public class PersonalModel implements Serializable {
     //    uuid
@@ -38,7 +38,8 @@ public class PersonalModel implements Serializable {
     @Pattern(regexp = "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)", message = "请输入正确的身份证格式")
     private String idno;
     //    性别 Y:男 N:女
-    @Pattern(regexp = "^[Y,N]$", message = "不支持第三性别")
+    @NotBlank(message = "性别不能为空")
+    @Pattern(regexp = "[Y,N]", message = "不支持第三性别")
     private String sex;
     //    地址
     @Size(max = 200, message = "地址最大长度为200位")

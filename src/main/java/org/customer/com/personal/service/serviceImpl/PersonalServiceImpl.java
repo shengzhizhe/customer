@@ -49,8 +49,9 @@ public class PersonalServiceImpl implements PersonalService {
         if (model.getNickname() != null && !model.getNickname().isEmpty()) {
             PersonalModel model1 = mapper.getByNickname(model.getNickname());
             if (model1 != null) {
+                result.setData(null);
                 result.setSuccess(false);
-                result.setCode(501);
+                result.setMessage("资料重复");
                 logger.info(Sl4jToString.info(2,
                         serviceName,
                         Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -63,17 +64,15 @@ public class PersonalServiceImpl implements PersonalService {
         model.setUuid(GetUuid.getUUID());
         int i = mapper.save(model);
         switch (i) {
-            case 0:
-                result.setSuccess(true);
-                result.setCode(201);
-                break;
             case 1:
                 result.setSuccess(true);
-                result.setCode(200);
+                result.setMessage("成功");
                 break;
-                default:result.setSuccess(false);
-                    result.setCode(500);
+            default:
+                result.setSuccess(false);
+                result.setMessage("失败");
         }
+        result.setData(null);
         logger.info(Sl4jToString.info(2,
                 serviceName,
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
@@ -95,14 +94,15 @@ public class PersonalServiceImpl implements PersonalService {
         switch (i) {
             case 0:
                 result.setSuccess(true);
-                result.setCode(201);
+                result.setMessage("失败");
                 break;
             case 1:
                 result.setSuccess(true);
-                result.setCode(200);
+                result.setMessage("成功");
                 break;
-            default:result.setSuccess(false);
-                result.setCode(500);
+            default:
+                result.setSuccess(false);
+                result.setMessage("错误");
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -125,14 +125,15 @@ public class PersonalServiceImpl implements PersonalService {
         switch (i) {
             case 0:
                 result.setSuccess(true);
-                result.setCode(201);
+                result.setMessage("失败");
                 break;
             case 1:
                 result.setSuccess(true);
-                result.setCode(200);
+                result.setMessage("成功");
                 break;
-            default:result.setSuccess(false);
-                result.setCode(500);
+            default:
+                result.setSuccess(false);
+                result.setMessage("错误");
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -155,7 +156,6 @@ public class PersonalServiceImpl implements PersonalService {
         PageHelper.startPage(now, size);
         Page<PersonalModel> page = mapper.findAll();
         result.setSuccess(true);
-        result.setCode(200);
         result.setData(page);
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -177,11 +177,9 @@ public class PersonalServiceImpl implements PersonalService {
         PersonalModel model = mapper.getById(id);
         if (model != null) {
             result.setSuccess(true);
-            result.setCode(200);
             result.setData(model);
         } else {
             result.setSuccess(false);
-            result.setCode(404);
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
@@ -203,11 +201,9 @@ public class PersonalServiceImpl implements PersonalService {
         PersonalModel model = mapper.getByAccount(account);
         if (model != null) {
             result.setSuccess(true);
-            result.setCode(200);
             result.setData(model);
         } else {
             result.setSuccess(false);
-            result.setCode(404);
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,

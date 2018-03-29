@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface VolumeMapper {
 
-    String tableName = " volume_table ";
+    String tableName = " customer_volume_table ";
 
     /**
      * 新增领卷记录

@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 /**
  * @name 用户领卷记录
- * @table volume_table
+ * @table customer_volume_table
  */
 public class VolumeModel {
     //    uuid
