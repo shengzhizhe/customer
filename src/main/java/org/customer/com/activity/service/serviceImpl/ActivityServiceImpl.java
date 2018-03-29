@@ -1,12 +1,13 @@
-package org.customer.com.commodity.service.serviceImpl;
+package org.customer.com.activity.service.serviceImpl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.customer.com.activity.mapper.ActivityMapper;
+import org.customer.com.activity.model.Activity;
+import org.customer.com.activity.service.ActivityService;
 import org.customer.com.commodity.mapper.CommodityMapper;
 import org.customer.com.commodity.model.CommodityModel;
-import org.customer.com.commodity.service.CommodityService;
-import org.customer.com.personal.model.PersonalModel;
-import org.customer.com.personal.service.serviceImpl.PersonalServiceImpl;
+import org.customer.com.commodity.service.serviceImpl.CommodityServiceImpl;
 import org.customer.com.util.resultJson.ResponseResult;
 import org.customer.com.util.sl4j.Sl4jToString;
 import org.slf4j.Logger;
@@ -15,47 +16,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-/**
- * logger.info(Sl4jToString.info(1,
- * serviceName,
- * Thread.currentThread().getStackTrace()[1].getMethodName(),
- * model.toString(),
- * 200,
- * null));
- */
 @Service
-public class CommodityServiceImpl implements CommodityService{
+public class ActivityServiceImpl implements ActivityService {
 
     private static Logger logger = LoggerFactory.getLogger(CommodityServiceImpl.class);
 
     @Value("${spring.application.name}")
     private String serviceName;
     @Autowired
-    private CommodityMapper mapper;
+    private ActivityMapper mapper;
     @Autowired
-    private ResponseResult<CommodityModel> result;
+    private ResponseResult<Activity> result;
 
     @Override
-    public ResponseResult findAllByPage(int pageNow, int pageSize,String lm) {
+    public ResponseResult page(int pageNow, int pageSize, String classification) {
         logger.info(Sl4jToString.info(
                 1,
                 serviceName,
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                pageNow+":"+pageSize+":"+lm,
+                pageNow+":"+pageSize+":"+classification,
                 result.getCode(),
                 null));
-        ResponseResult<Page<CommodityModel>> result = new ResponseResult<>();
+        ResponseResult<Page<Activity>> result = new ResponseResult();
         PageHelper.startPage(pageNow,pageSize);
-        Page<CommodityModel> allByPage = mapper.findAllByPage(lm);
+        Page<Activity> page = mapper.page(classification);
         result.setSuccess(true);
-        result.setData(allByPage);
-        result.setMessage("成功");
+        result.setData(page);
         logger.info(Sl4jToString.info(
                 2,
                 serviceName,
                 Thread.currentThread().getStackTrace()[1].getMethodName(),
-                pageNow+":"+pageSize+":"+lm,
-                result.getCode(),
+                pageNow+":"+pageSize+":"+classification,
+                this.result.getCode(),
                 null));
         return result;
     }
@@ -69,16 +61,19 @@ public class CommodityServiceImpl implements CommodityService{
                 uuid+"",
                 result.getCode(),
                 null));
-        CommodityModel byName = mapper.getByUuid(uuid);
+        Activity byName = mapper.getByUuid(uuid);
         if(byName==null||"".equals(byName)){
             result.setSuccess(false);
-            result.setMessage("抱歉，该商品已下架");
+            result.setMessage("抱歉，该活动结束");
         }else {
             result.setSuccess(true);
             result.setData(byName);
-            if(byName.getSxj()==2){
-                result.setMessage("抱歉，该商品已下架");
+            if(byName.getType()==0){
+                result.setMessage("活动尚未开启");
                 result.setCode(201);
+            }else if(byName.getType()==2){
+                result.setMessage("抱歉，活动已结束");
+                result.setCode(202);
             }else {
             result.setMessage("成功");
             }
@@ -92,6 +87,4 @@ public class CommodityServiceImpl implements CommodityService{
                 null));
         return result;
     }
-
-
 }

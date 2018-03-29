@@ -28,11 +28,13 @@ public class CommodityModel {
      private int sl;
      //商品类目
      private String lm;
+     //商品上架、下架 0:上架，1：下架
+    private int sxj;
 
     public CommodityModel() {
     }
 
-    public CommodityModel(String uuid, String cname, Double jg, String dw, String ge, String zt, String pp, String xq, String xl, String busid, int sl, String lm) {
+    public CommodityModel(String uuid, String cname, Double jg, String dw, String ge, String zt, String pp, String xq, String xl, String busid, int sl, String lm, int sxj) {
         this.uuid = uuid;
         this.cname = cname;
         this.jg = jg;
@@ -45,6 +47,7 @@ public class CommodityModel {
         this.busid = busid;
         this.sl = sl;
         this.lm = lm;
+        this.sxj = sxj;
     }
 
     public String getUuid() {
@@ -143,6 +146,14 @@ public class CommodityModel {
         this.lm = lm;
     }
 
+    public int getSxj() {
+        return sxj;
+    }
+
+    public void setSxj(int sxj) {
+        this.sxj = sxj;
+    }
+
     @Override
     public String toString() {
         return "CommodityModel{" +
@@ -158,6 +169,7 @@ public class CommodityModel {
                 ", busid='" + busid + '\'' +
                 ", sl=" + sl +
                 ", lm='" + lm + '\'' +
+                ", sxj=" + sxj +
                 '}';
     }
 }

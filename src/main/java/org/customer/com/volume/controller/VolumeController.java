@@ -48,11 +48,11 @@ public class VolumeController {
     @ApiOperation(value = "领卷记录分页",
             response = ResponseResult.class,
             httpMethod = "GET")
-    @RequestMapping(value = "/findAll",
+    @RequestMapping(value = "/volume/page/{pageNow}/{pageSize}/{use}",
             method = RequestMethod.GET)
-    public ResponseResult findAll(@RequestParam(value = "pageNow") int pageNow,
-                                  @RequestParam(value = "pageSize") int pageSize,
-                                  @RequestParam(value = "use") String use) {
+    public ResponseResult findAll(@PathVariable(value = "pageNow") int pageNow,
+                                  @PathVariable(value = "pageSize") int pageSize,
+                                  @PathVariable(value = "use") String use) {
         return service.findAll(pageNow, pageSize,use);
     }
 
@@ -61,7 +61,7 @@ public class VolumeController {
             response = ResponseResult.class,
             httpMethod = "POST",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value = "/save",
+    @RequestMapping(value = "/volume",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseResult save(@Valid @RequestBody VolumeModel model, BindingResult bindingResult) {

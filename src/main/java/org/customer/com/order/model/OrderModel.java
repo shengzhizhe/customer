@@ -25,7 +25,7 @@ public class OrderModel {
     private String cjTime;
     //创建人
     private String account;
-    //订单状态
+    //订单状态  0:未完成，1：已完成，2：已关闭
     private int type;
 
     public OrderModel() {
