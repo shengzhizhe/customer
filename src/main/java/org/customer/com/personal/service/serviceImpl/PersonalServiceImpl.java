@@ -92,10 +92,6 @@ public class PersonalServiceImpl implements PersonalService {
                 null));
         int i = mapper.delete(id);
         switch (i) {
-            case 0:
-                result.setSuccess(true);
-                result.setMessage("失败");
-                break;
             case 1:
                 result.setSuccess(true);
                 result.setMessage("成功");
@@ -123,10 +119,6 @@ public class PersonalServiceImpl implements PersonalService {
                 null));
         int i = mapper.update(model);
         switch (i) {
-            case 0:
-                result.setSuccess(true);
-                result.setMessage("失败");
-                break;
             case 1:
                 result.setSuccess(true);
                 result.setMessage("成功");
@@ -202,8 +194,11 @@ public class PersonalServiceImpl implements PersonalService {
         if (model != null) {
             result.setSuccess(true);
             result.setData(model);
+            result.setMessage("成功");
         } else {
             result.setSuccess(false);
+            result.setData(null);
+            result.setMessage("失败");
         }
         logger.info(Sl4jToString.info(2,
                 serviceName,
