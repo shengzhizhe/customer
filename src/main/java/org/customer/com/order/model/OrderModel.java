@@ -19,6 +19,8 @@ public class OrderModel {
     private String zj;
     //配送地址
     private String address;
+    //接收电话
+    private String phone;
     //订单编号
     private String ddbh;
     //创建时间
@@ -33,7 +35,7 @@ public class OrderModel {
     public OrderModel() {
     }
 
-    public OrderModel(String uuid, String spid, String sl, Double psf, String yhqid, String zj, String address, String ddbh, String cjTime, String account, String busid, int type) {
+    public OrderModel(String uuid, String spid, String sl, Double psf, String yhqid, String zj, String address, String phone, String ddbh, String cjTime, String account, String busid, int type) {
         this.uuid = uuid;
         this.spid = spid;
         this.sl = sl;
@@ -41,6 +43,7 @@ public class OrderModel {
         this.yhqid = yhqid;
         this.zj = zj;
         this.address = address;
+        this.phone = phone;
         this.ddbh = ddbh;
         this.cjTime = cjTime;
         this.account = account;
@@ -144,6 +147,14 @@ public class OrderModel {
         this.busid = busid;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "OrderModel{" +
@@ -154,6 +165,7 @@ public class OrderModel {
                 ", yhqid='" + yhqid + '\'' +
                 ", zj='" + zj + '\'' +
                 ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
                 ", ddbh='" + ddbh + '\'' +
                 ", cjTime='" + cjTime + '\'' +
                 ", account='" + account + '\'' +

@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Select;
 import org.customer.com.order.model.OrderModel;
 
 public interface OrderMapper {
-    @Insert({"INSERT INTO customer_order_table (uuid,spid,sl,psf,yhqid,zj,address,ddbh,cjtime,account,type) " +
+    @Insert({"INSERT INTO customer_order_table (uuid,spid,sl,psf,yhqid,zj,address,phone,ddbh,cjtime,account,type) " +
             "VALUES (#{model.uuid},#{model.spid},#{model.sl},#{model.psf},#{model.yhqid},#{model.zj},#{model.address}," +
-            "#{model.ddbh},#{model.cjtime},#{model.account},0)"})
+            "#{model.phone},#{model.ddbh},#{model.cjtime},#{model.account},0)"})
     int add(@Param("model")OrderModel model);
 
     @Select({"SELECT * FROM customer_order_table WHERE account = #{account}"})
