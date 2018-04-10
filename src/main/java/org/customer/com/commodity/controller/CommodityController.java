@@ -41,4 +41,15 @@ public class CommodityController {
     public ResponseResult getByUuid(@PathVariable(value = "uuid") String uuid){
         return service.getByUuid(uuid);
     }
+
+    @ApiOperation(
+            value = "根据名称查询单个商品",
+            response = ResponseResult.class,
+            httpMethod = "GET")
+    @RequestMapping(
+            value = "/commodity/getByName/{name}",
+            method = RequestMethod.GET)
+    public ResponseResult getByName(@PathVariable(value = "name") String name){
+        return service.getByName(name);
+    }
 }

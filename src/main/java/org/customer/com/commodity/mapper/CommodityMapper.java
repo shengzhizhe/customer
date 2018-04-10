@@ -10,4 +10,6 @@ public interface CommodityMapper {
     Page<CommodityModel> findAllByPage(@Param("lm") String lm);
     @Select({"SELECT * FROM business_commodity_table WHERE uuid = #{uuid}"})
     CommodityModel getByUuid(@Param("uuid") String uuid);
+    @Select({"SELECT * FROM business_commodity_table WHERE cname LIKE #{name}"})
+    CommodityModel getByName(@Param("name") String name);
 }

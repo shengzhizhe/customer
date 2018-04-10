@@ -7,4 +7,6 @@ public interface CommodityService {
     ResponseResult findAllByPage(int pageNow,int pageSize,String lm);
 
     ResponseResult getByUuid(String uuid);
+
+    ResponseResult getByName(String name);
 }

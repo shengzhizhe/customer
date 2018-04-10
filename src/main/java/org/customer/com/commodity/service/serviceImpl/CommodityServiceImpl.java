@@ -93,5 +93,39 @@ public class CommodityServiceImpl implements CommodityService{
         return result;
     }
 
+    @Override
+    public ResponseResult getByName(String name) {
+        logger.info(Sl4jToString.info(
+                1,
+                serviceName,
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
+                name+"",
+                result.getCode(),
+                null));
+        name = "%"+name+"%";
+        CommodityModel byName = mapper.getByName(name);
+        if(byName==null||"".equals(byName)){
+            result.setSuccess(false);
+            result.setMessage("抱歉，该商品已下架");
+        }else {
+            result.setSuccess(true);
+            result.setData(byName);
+            if(byName.getSxj()==2){
+                result.setMessage("抱歉，该商品已下架");
+                result.setCode(201);
+            }else {
+                result.setMessage("成功");
+            }
+        }
+        logger.info(Sl4jToString.info(
+                2,
+                serviceName,
+                Thread.currentThread().getStackTrace()[1].getMethodName(),
+                name+"",
+                result.getCode(),
+                null));
+        return null;
+    }
+
 
 }

@@ -25,13 +25,15 @@ public class OrderModel {
     private String cjTime;
     //创建人
     private String account;
+    //商家id
+    private String busid;
     //订单状态  0:未完成，1：已完成，2：已关闭
     private int type;
 
     public OrderModel() {
     }
 
-    public OrderModel(String uuid, String spid, String sl, Double psf, String yhqid, String zj, String address, String ddbh, String cjTime, String account, int type) {
+    public OrderModel(String uuid, String spid, String sl, Double psf, String yhqid, String zj, String address, String ddbh, String cjTime, String account, String busid, int type) {
         this.uuid = uuid;
         this.spid = spid;
         this.sl = sl;
@@ -42,6 +44,7 @@ public class OrderModel {
         this.ddbh = ddbh;
         this.cjTime = cjTime;
         this.account = account;
+        this.busid = busid;
         this.type = type;
     }
 
@@ -133,6 +136,14 @@ public class OrderModel {
         this.type = type;
     }
 
+    public String getBusid() {
+        return busid;
+    }
+
+    public void setBusid(String busid) {
+        this.busid = busid;
+    }
+
     @Override
     public String toString() {
         return "OrderModel{" +
@@ -146,6 +157,7 @@ public class OrderModel {
                 ", ddbh='" + ddbh + '\'' +
                 ", cjTime='" + cjTime + '\'' +
                 ", account='" + account + '\'' +
+                ", busid='" + busid + '\'' +
                 ", type=" + type +
                 '}';
     }
